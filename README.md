@@ -35,8 +35,6 @@ AI-powered web application that analyzes student study patterns, predicts perfor
 ---
 
 ## 📷 Preview
-## 📷 Preview
-## 📷 Preview
 
 <p align="center">
   <img src="screenshots/home.png" width="400"/>
