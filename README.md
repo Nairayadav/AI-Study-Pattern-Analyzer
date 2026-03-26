@@ -3,6 +3,9 @@
 AI-powered web application that analyzes student study patterns, predicts performance, and provides personalized insights using Machine Learning and Flask.
 
 ---
+![Python](https://img.shields.io/badge/Python-3.9-blue)
+![Flask](https://img.shields.io/badge/Flask-WebApp-green)
+![ML](https://img.shields.io/badge/MachineLearning-Model-orange)
 
 ## 🚀 Features
 - 📊 Study pattern analysis  
@@ -33,17 +36,14 @@ AI-powered web application that analyzes student study patterns, predicts perfor
 
 ## 📷 Preview
 ## 📷 Preview
+## 📷 Preview
 
-### 🏠 Home Page
-![Home](screenshots/home.png)
-
-![Home](screenshots/home1.png)
-
-### 📊 Result Page
-![Result](screenshots/result1.png)
-
-![Result](screenshots/result2.png)
-
+<p align="center">
+  <img src="screenshots/home.png" width="400"/>
+  <img src="screenshots/home1.png" width="400"/>
+  <img src="screenshots/result1.png" width="400"/>
+  <img src="screenshots/result2.png" width="400"/>
+</p>
 
 ---
 
