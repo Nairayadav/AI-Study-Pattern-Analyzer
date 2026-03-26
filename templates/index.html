@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Study Pattern Analyzer</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>📊 AI Study Pattern Analyzer</h1>
+
+<button class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+<div class="card">
+
+<form action="/predict" method="post">
+
+<label>📚 Study Hours</label>
+<input type="number" name="study" required>
+
+<label>☕ Break Time (minutes)</label>
+<input type="number" name="break" required>
+
+<label>😴 Sleep Hours</label>
+<input type="number" name="sleep" required>
+
+<button type="submit">Analyze Productivity</button>
+
+</form>
+
+</div>
+
+<div class="card result-card">
+
+<h2>{{ prediction_text }}</h2>
+
+<p class="suggestion">{{ suggestion }}</p>
+
+</div>
+
+<div class="card">
+
+<h2>📊 Productivity Chart</h2>
+
+<canvas id="productivityChart"></canvas>
+
+</div>
+
+<div class="card">
+
+<h2>⚡ Productivity Gauge</h2>
+
+<canvas id="gaugeChart"></canvas>
+
+</div>
+
+<div class="card">
+
+<h2>📅 Weekly Study Plan</h2>
+
+<ul class="planner">
+{% if plan %}
+<li>Monday → {{ plan["Monday"] }} hours</li>
+<li>Tuesday → {{ plan["Tuesday"] }} hours</li>
+<li>Wednesday → {{ plan["Wednesday"] }} hours</li>
+<li>Thursday → {{ plan["Thursday"] }} hours</li>
+<li>Friday → {{ plan["Friday"] }} hours</li>
+<li>Saturday → {{ plan["Saturday"] }} hours</li>
+<li>Sunday → {{ plan["Sunday"] }}</li>
+{% endif %}
+</ul>
+
+</div>
+
+</div>
+
+<script>
+
+var studyHours = {{ study | default(0) }};
+var productivity = {{ productivity | default(0) }};
+
+// Bar chart
+var ctx = document.getElementById('productivityChart').getContext('2d');
+
+new Chart(ctx,{
+type:'bar',
+data:{
+labels:['Study Hours','Productivity'],
+datasets:[{
+label:'Study Analytics',
+data:[studyHours, productivity],
+backgroundColor:['#4facfe','#00c853']
+}]
+}
+});
+
+// Gauge chart
+var ctx2 = document.getElementById('gaugeChart').getContext('2d');
+
+new Chart(ctx2,{
+type:'doughnut',
+data:{
+labels:['Low','Medium','High'],
+datasets:[{
+data:[50,25,25],
+backgroundColor:['#ff5252','#ffc107','#00c853']
+}]
+},
+options:{
+circumference:180,
+rotation:270,
+cutout:'70%',
+plugins:{tooltip:{enabled:false}}
+}
+});
+
+// dark mode
+function toggleDarkMode(){
+document.body.classList.toggle("dark-mode");
+}
+
+</script>
+
+</body>
+</html>
